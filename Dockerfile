@@ -1,7 +1,7 @@
 FROM ubuntu:18.04 as builder
 WORKDIR /app
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl ca-certificates
+RUN apt update && \
+    apt install -y --no-install-recommends curl ca-certificates
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
