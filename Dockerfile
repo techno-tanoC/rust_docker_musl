@@ -3,7 +3,8 @@ WORKDIR /app
 RUN apt update && \
     apt install -y --no-install-recommends curl ca-certificates
 
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+    | sh -s -- -y --default-toolchain stable-x86_64-unknown-linux-gnu
 
 ENV PATH=/root/.cargo/bin:$PATH
 RUN rustup target add x86_64-unknown-linux-musl --toolchain stable-x86_64-unknown-linux-gnu
