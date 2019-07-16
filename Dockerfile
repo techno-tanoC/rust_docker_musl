@@ -8,12 +8,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
 
 ENV PATH=/root/.cargo/bin:$PATH
 RUN rustup target add x86_64-unknown-linux-musl --toolchain stable-x86_64-unknown-linux-gnu
-RUN apt install -y --no-install-recommends musl-tools build-essential
-
-COPY Cargo.toml .
-COPY Cargo.lock .
-RUN mkdir src && echo "fn main() {}" > src/main.rs
-RUN cargo build --release --target x86_64-unknown-linux-musl
+RUN apt install -y --no-install-recommends build-essential
 
 COPY . .
 RUN cargo build --release --target x86_64-unknown-linux-musl
